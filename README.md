@@ -38,6 +38,7 @@ e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, {SK=[sik]+[sek]/[soek], SK;=[sek]/[soek]
   - [粵語拼音方案jyut6ping3](https://github.com/rime/rime-cantonese)  **`cantonese`**
   - [搜狗雙拼（自然碼修改）]  **`double_pinyin_sg`**
 
+
 反查
   PC版用「\`」鍵打開，mobile版用「~]鍵打開。默認是[搜狗雙拼（自然碼修改）]反查。
   「Q:」打開用[粵語拼音方案jyut6ping3]輸入，「X:」打開用筆畫輸入。
