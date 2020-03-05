@@ -2,7 +2,7 @@
 
 * 基於「jyut6ping3」聲調粵拼詞庫、重要參考「soengping」的設計和自然碼雙拼的佈局的粵語雙拼輸入方案。<br>
 * 附帶兩種方案，適合在PC端及mobile端使用。兩鍵內輸入，附加編碼「；」可以實現精準摘選重碼韻母。<br>
-* [採用1993年香港語言學學會粵語拼音方案](https://www.lshk.org/jyutping)<br>
+* 採用1993年[香港語言學學會粵語拼音方案](https://www.lshk.org/jyutping)<br>
 * [「jyut6ping3」項目主頁](https://github.com/rime/rime-cantonese)<br>
 * [「soengping」項目主頁](https://github.com/Over-There-Is/rime-soengping/)<br>
 * 感謝以上方案的開發者和維護者。<br>
