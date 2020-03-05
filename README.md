@@ -31,4 +31,4 @@
 * T是本方案集4個音的鍵，包括eo/oe(對立), oeng, ut，其中僅有oe和oeng的極其少量的重碼。
 * 其餘韻母都會有重碼現象，輸入兩鍵可以得到多個音的結果（大多數情況已經可以得到想要的結果）。
 * 通過添加附加區分編碼[;]鍵可以精確到重碼韻母（碼表中用**空格+逗號**隔開）。<br>
-e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, {SK=[sik]+[sek]/[soek], SK;=[sek]/[soek]}.
+e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, {SK=[sik]+[sek]/[soek], SK;=[sek]/[soek]}, {HH=[haam], HH;=HH[haak]}.
