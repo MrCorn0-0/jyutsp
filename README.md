@@ -6,7 +6,7 @@
 * [「jyut6ping3」項目主頁](https://github.com/rime/rime-cantonese)<br>
 * [「soengping」項目主頁](https://github.com/Over-There-Is/rime-soengping/)<br>
 * 感謝以上方案的開發者和維護者。<br>
-* 「jyutsp」by *Mr.Corn* [本項目主頁](https://github.com/MrCorn0-0/jyutsp)<br>
+* [「jyutsp」本項目主頁](https://github.com/MrCorn0-0/jyutsp) by *Mr.Corn* <br>
 
 # 輸入編碼
 ## 碼表
@@ -45,3 +45,9 @@ e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, <br>
 
   - PC版用「\`」鍵打開，mobile版用「~]鍵打開。默認是[搜狗雙拼（自然碼修改）]反查。
   - 「Q:」打開用[粵語拼音方案jyut6ping3]輸入，「X:」打開用筆畫輸入。
+
+
+示例
+
+    這是一個示例。/zesiycgosill
+    希望大家可以enjoy粵語雙拼方案。/hzmwdvgahoyi enjoy ydyuutp;fwee。
