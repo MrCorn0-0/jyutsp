@@ -6,9 +6,10 @@ jyutsp - 基於rime的粵語雙拼方案
 採用1993年香港語言學學會粵語拼音方案   https://www.lshk.org/jyutping<br>
 「jyut6ping3」項目主頁 https://github.com/rime/rime-cantonese<br>
 「soengping」項目主頁 https://github.com/Over-There-Is/rime-soengping/<br>
+感謝以上方案的開發者和維護者。<br>
 「jyutsp」本項目主頁 https://github.com/MrCorn0-0/jyutsp<br>
-
 
 碼表
 =========================
-![](https://pic2.zhimg.com/80/v2-c7ea6ffcfe550d4bc31ef38a27e5edfd_720w.jpg)
+[![zhihu]](https://www.zhihu.com/question/54691506/answer/1022245649)  
+[zhihu]:https://pic2.zhimg.com/80/v2-c7ea6ffcfe550d4bc31ef38a27e5edfd_720w.jpg "碼表"  
