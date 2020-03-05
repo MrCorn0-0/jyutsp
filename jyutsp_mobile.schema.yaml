@@ -79,6 +79,7 @@ speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba;
   delimiter: " '" 
   algebra:
+    - xform/([123456])//         # 忽略声调
     # 取消下兩行註釋，支援疑影不分
     #- derive/^ng([aeiou])/$1/
     #- derive/^([aeiou])/ng$1/
@@ -86,7 +87,6 @@ speller:
     #- derive/^n/l/
     # 取消下行註釋，支援獨立鼻音韻 ng 併入 m，如「吳」讀若「唔」
     #- derive/^ng$/m/
-    - xform/([123456])//         # 忽略声调
     - xform/^([aeiouy])/E$1/    #重要，實現聲母單獨輸入功能。零声母设定，非derive
     - xform/yun$/R/
     - xform/yut$/D;/  # 增加 ;表示精選
