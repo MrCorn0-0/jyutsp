@@ -11,5 +11,6 @@ jyutsp - 基於rime的粵語雙拼方案
 
 碼表
 =========================
-[![zhihu]](https://www.zhihu.com/question/54691506/answer/1022245649)  
-[zhihu]:https://pic2.zhimg.com/80/v2-c7ea6ffcfe550d4bc31ef38a27e5edfd_720w.jpg "碼表"  
+[![zhihu]](https://www.zhihu.com/question/54691506/answer/1022245649)
+
+[zhihu]:https://pic2.zhimg.com/80/v2-c7ea6ffcfe550d4bc31ef38a27e5edfd_720w.jpg "碼表"
