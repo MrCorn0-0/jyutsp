@@ -1,12 +1,12 @@
 # jyutsp - 基於rime的粵語雙拼方案
 
-基於「jyut6ping3」聲調粵拼詞庫、重要參考「soengping」的設計和自然碼雙拼的佈局的粵語雙拼輸入方案。<br>
-附帶兩種方案，適合在PC端及mobile端使用。兩鍵內輸入，附加編碼「；」可以實現精準摘選重碼韻母。<br>
-採用1993年香港語言學學會粵語拼音方案   https://www.lshk.org/jyutping<br>
-「jyut6ping3」項目主頁 https://github.com/rime/rime-cantonese<br>
-「soengping」項目主頁 https://github.com/Over-There-Is/rime-soengping/<br>
-感謝以上方案的開發者和維護者。<br>
-「jyutsp」本項目主頁 https://github.com/MrCorn0-0/jyutsp<br>
+* 基於「jyut6ping3」聲調粵拼詞庫、重要參考「soengping」的設計和自然碼雙拼的佈局的粵語雙拼輸入方案。<br>
+* 附帶兩種方案，適合在PC端及mobile端使用。兩鍵內輸入，附加編碼「；」可以實現精準摘選重碼韻母。<br>
+* 採用1993年香港語言學學會粵語拼音方案   https://www.lshk.org/jyutping<br>
+* 「jyut6ping3」項目主頁 https://github.com/rime/rime-cantonese<br>
+* 「soengping」項目主頁 https://github.com/Over-There-Is/rime-soengping/<br>
+* 感謝以上方案的開發者和維護者。<br>
+* 「jyutsp」本項目主頁 https://github.com/MrCorn0-0/jyutsp<br>
 
 # 輸入編碼
 ## 碼表
@@ -30,4 +30,5 @@
 * E為零聲母，同時也是e和on（會有部分重碼但少量）。
 * T是本方案集4個音的鍵，包括eo/oe(對立), oeng, ut，其中僅有oe和oeng的極其少量的重碼。
 * 其餘韻母都會有重碼現象，輸入兩鍵可以得到多個音的結果（大多數情況已經可以得到想要的結果）。
-* 通過添加附加區分編碼[;]鍵可以精確到重碼韻母（碼表中用**空格+逗號**隔開）。e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, {SK=[sik]+[sek]/[soek], SK;=[sek]/[soek]}.
+* 通過添加附加區分編碼[;]鍵可以精確到重碼韻母（碼表中用**空格+逗號**隔開）。<br>
+e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, {SK=[sik]+[sek]/[soek], SK;=[sek]/[soek]}.
