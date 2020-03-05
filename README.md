@@ -24,7 +24,7 @@
 ## 韻母
 * 本方案基於[「jyut6ping3」](https://github.com/rime/rime-cantonese)項目的詞典，統計得出最佳韻母分佈，大概82%的字是兩鍵精準編碼。[詳情可見](https://www.zhihu.com/question/54691506/answer/1022245649)。
 * 合併eu/iu, em/im.
-* 成音節[m], [ng] 直接用 M，R輸入。
+* 成音節[m], [ng] 直接用 MM，RR 輸入。
 * yu韻母放在Y鍵。關於jyu韻，本方案處理為 yu。
 * ou放在u的位置，不存在聲母衝突。eoi/ui，yun/un, 同理。（注意 q和x 做u/ui/un/uk的聲母）
 * E為零聲母，同時也是e和on（會有部分重碼但少量）。
