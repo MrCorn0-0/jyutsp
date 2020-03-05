@@ -173,70 +173,71 @@ translator:
   spelling_hints: 8
   strict_spelling: true
   preedit_format:
+    - xform/mｍ/$1M/
+    - xform/(^|[ '])rr/$1NG/
     - xform/(^|[ '])([edtnlghzjcusi])v;/$1$2AAP/    #順序好重要，先;
     - xform/(^|[ '])([bpmfdtnlgkrhxzjcusiyw])v/$1$2AAI/
-    - xform/(^|[ '])([nlgkhzjcusiy])t($|[ '])/$1$2OENG$3/
-    - derive/(^|[ '])([grh])e($|[ '])/$1$2ON$3/
+    - xform/(^|[ '])([nlgkhzjcusiy])t/$1$2OENG/
+    - derive/(^|[ '])([egrh])e/$1$2ON/
     - xform/(^|[ '])([bpmdtlghzjcusi]);;/$1$2ENG/
-    - xform/(^|[ '])(\w);($|[ '])/$1$2ING$3/
-    - xform/(^|[ '])(r|[pmfdtnlhqxzcsjuiykg])s($|[ '])/$1$2UNG$3/
-    - xform/(^|[ '])yd;($|[ '])/$1YUT$2/
+    - xform/(^|[ '])(\w);/$1$2ING$3/
+    - xform/(^|[ '])(r|[pmfdtnlhqxzcsjuiykg])s/$1$2UNG/
+    - xform/(^|[ '])yd;/$1YUT/
     - xform/(^|[ '])([dtlgkhzjcusiy])d;/$1$2YUT/
     - xform/(^|[ '])([gk])d/$1$2YUT/
-    - xform/(^|[ '])(r|[bpmfdtnlhqxzcsjuiy])d($|[ '])/$1$2UK$3/
-    - xform/(^|[ '])([dtnlgkhzjcusi])r($|[ '])/$1$2YUN$3/
-    - xform/(^|[ '])yr($|[ '])/$1YUN$2/
-    - xform/(^|[ '])([bpmfxw])r($|[ '])/$1$2UN$3/
+    - xform/(^|[ '])(r|[bpmfdtnlhqxzcsjuiy])d/$1$2UK/
+    - xform/(^|[ '])([dtnlgkhzjcusi])r/$1$2YUN/
+    - xform/(^|[ '])yr/$1YUN/
+    - xform/(^|[ '])([bpmfxw])r/$1$2UN/
     - xform/(^|[ '])([dtnlgkrhzjcusie])y;/$1$2OI/
     - xform/(^|[ '])([dtnlgkrhe])y/$1$2OI/
-    - xform/(^|[ '])yu($|[ '])/$1YU$2/
-    - xform/(^|[ '])([zjcusi])y($|[ '])/$1$2YU$3/
-    - xform/(^|[ '])([mlg])a;($|[ '])/$1$2A$3/
+    - xform/(^|[ '])yu/$1YU/
+    - xform/(^|[ '])([zjcusi])y/$1$2YU/
+    - xform/(^|[ '])([mlg])a;/$1$2A/
     - xform/(^|[ '])(\w)q;/$1$2AK/
-    - xform/(^|[ '])([exrw])q($|[ '])/$1$2AK$3/
-    - xform/(^|[ '])([bpmdtnlgkhzjcusiy])q($|[ '])/$1$2IU$3/
+    - xform/(^|[ '])([exrw])q/$1$2AK/
+    - xform/(^|[ '])([bpmdtnlgkhzjcusiy])q/$1$2IU/
     - xform/(^|[ '])(\w)m;/$1$2AP/
     - xform/(^|[ '])(\w)g;/$1$2ANG/
     - xform/(^|[ '])([fxqmwp])g/$1$2ANG/
     - xform/(^|[ '])(\w)w;/$1$2OT/
-    - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])w($|[ '])/$1$2ONG$3/
-    - xform/(^|[ '])([dlgkzjcusiy])k;($|[ '])/$1$2OEK$3/
-    - xform/(^|[ '])([dtgh])t($|[ '])/$1$2OE$3/
+    - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])w/$1$2ONG/
+    - xform/(^|[ '])([dlgkzjcusiy])k;/$1$2OEK/
+    - xform/(^|[ '])([dtgh])t/$1$2OE/
     - xform/(^|[ '])([dtnlgkhzjcusiy])p;/$1$2EON/
     - xform/(^|[ '])([y])p/$1$2EON/
     - xform/(^|[ '])([dtnlgkhzjcusiy])o;/$1$2EOT/
     - xform/(^|[ '])(\w)i;/$1$2IT/
-    - xform/(^|[ '])([bfkrp])i($|[ '])/$1$2IT$3/
-    - xform/(^|[ '])([bpmfqw])t($|[ '])/$1$2UT$3/
-    - xform/(^|[ '])([bpmdtnlgrhzjcusi])u($|[ '])/$1$2OU$3/
+    - xform/(^|[ '])([bfkrp])i/$1$2IT/
+    - xform/(^|[ '])([bpmfqw])t/$1$2UT/
+    - xform/(^|[ '])([bpmdtnlgrhzjcusi])u/$1$2OU/
     - xform/(^|[ '])([fxqw])u/$1$2U/
-    - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])p($|[ '])/$1$2OK$3/
-    - xform/(^|[ '])(\w)f($|[ '])/$1$2AN$3/
-    - xform/(^|[ '])(\w)g($|[ '])/$1$2AM$3/
+    - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])p/$1$2OK/
+    - xform/(^|[ '])(\w)f/$1$2AN/
+    - xform/(^|[ '])(\w)g/$1$2AM/
     - xform/(^|[ '])(\w)h;/$1$2AAK/
     - xform/(^|[ '])([bfqyxmpw])h/$1$2AAK/
-    - xform/(^|[ '])(\w)h($|[ '])/$1$2AAM$3/
+    - xform/(^|[ '])(\w)h/$1$2AAM/
     - xform/(^|[ '])(\w)j;/$1$2AANG/
     - xform/(^|[ '])([yq])j/$1$2AANG/
     - xform/(^|[ '])(\w)j/$1$2AAN/
     - xform/(^|[ '])(\w)a/$1$2AA/
-    - xform/(^|[ '])(\w)k($|[ '])/$1$2IK$3/
-    - xform/(^|[ '])(\w)l($|[ '])/$1$2AI$3/
+    - xform/(^|[ '])(\w)k/$1$2IK/
+    - xform/(^|[ '])(\w)l/$1$2AI/
     - xform/(^|[ '])(\w)z;/$1$2IP/
-    - xform/(^|[ '])([cytzj])z($|[ '])/$1$2IP$3/
-    - xform/(^|[ '])(\w)z($|[ '])/$1$2EI$3/
-    - xform/(^|[ '])([dtnlgkhzjcusiy])x($|[ '])/$1$2EOI$3/
-    - xform/(^|[ '])([bpmfxqw])x($|[ '])/$1$2UI$3/
+    - xform/(^|[ '])([cytzj])z/$1$2IP/
+    - xform/(^|[ '])(\w)z/$1$2EI/
+    - xform/(^|[ '])([dtnlgkhzjcusiy])x/$1$2EOI/
+    - xform/(^|[ '])([bpmfxqw])x/$1$2UI/
     - xform/(^|[ '])(\w)c;/$1$2AAT/
     - xform/(^|[ '])([t])c/$1$2AAT/
-    - xform/(^|[ '])(\w)c($|[ '])/$1$2AT$3/
-    - xform/(^|[ '])(\w)b($|[ '])/$1$2AU$3/
+    - xform/(^|[ '])(\w)c/$1$2AT/
+    - xform/(^|[ '])(\w)b/$1$2AU/
     - xform/(^|[ '])(\w)n;/$1$2AAU/
     - xform/(^|[ '])([er])n/$1$2AAU/
-    - xform/(^|[ '])(\w)n($|[ '])/$1$2IN$3/
-    - xform/(^|[ '])(\w)m;/$1$2AP/
+    - xform/(^|[ '])(\w)n/$1$2IN/
     - xform/(^|[ '])([er])m/$1$2AP/
-    - xform/(^|[ '])(\w)m($|[ '])/$1$2IM$3/
+    - xform/(^|[ '])(?!m)m/$1$2IM/
     - xform/(^|[ '])i([AEIOUY])/$1CH$2/
     - xform/(^|[ '])i/$1I/
 #   - derive/(^|[ '])u/$1OU/
@@ -270,8 +271,6 @@ translator:
     - xform/(^|[ '])z/$1Z/
     - xform/(^|[ '])e(\w+)/$1$2/
     - xform/(^|[ '])e/$1E/
-    - xform/(^|[ '])mｍ($|[ '])/$1M$2/
-    - xform/(^|[ '])rr($|[ '])/$1NG$2/
     - xform/(K?)W(I|O)NG/$1WW$2NG/
     - xform/(G)W(AAM|AAU|AM|AU|ENG|IM|IU|OE|OI|U|Y)/$1$2/
     - xform/(K)W(AAM|AAU|AM|AU|E|I|O|U|Y)/$1$2/
