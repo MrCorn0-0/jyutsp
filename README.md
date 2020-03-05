@@ -6,7 +6,7 @@
 * 「jyut6ping3」項目主頁 https://github.com/rime/rime-cantonese<br>
 * 「soengping」項目主頁 https://github.com/Over-There-Is/rime-soengping/<br>
 * 感謝以上方案的開發者和維護者。<br>
-* 「jyutsp」本項目主頁 https://github.com/MrCorn0-0/jyutsp<br>
+* 「jyutsp」by *Mr.Corn* 本項目主頁 https://github.com/MrCorn0-0/jyutsp<br>
 
 # 輸入編碼
 ## 碼表
@@ -32,3 +32,12 @@
 * 其餘韻母都會有重碼現象，輸入兩鍵可以得到多個音的結果（大多數情況已經可以得到想要的結果）。
 * 通過添加附加區分編碼[;]鍵可以精確到重碼韻母（碼表中用**空格+逗號**隔開）。<br>
 e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, {SK=[sik]+[sek]/[soek], SK;=[sek]/[soek]}, {HH=[haam], HH;=HH[haak]}.
+
+# 其他
+本方案依賴於
+  - [粵語拼音方案jyut6ping3](https://github.com/rime/rime-cantonese)  **`cantonese`**
+  - [搜狗雙拼（自然碼修改）]  **`double_pinyin_sg`**
+
+反查
+  PC版用「\`」鍵打開，mobile版用「~]鍵打開。默認是[搜狗雙拼（自然碼修改）]反查。
+  「Q:」打開用[粵語拼音方案jyut6ping3]輸入，「X:」打開用筆畫輸入。
