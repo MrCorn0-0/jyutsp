@@ -44,7 +44,8 @@ e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, <br>
 iRime環境下的安裝
   1. 根目錄導入jyutsp_mobile.schema.yaml和jyut6ping3.schema.yaml。（若需要雙拼反查則附加double_pinyin_sg.schema.yaml及相應build文件）
   2. build文件夾裡導入jyut6ping3的四個文件（prism, scheme, table<-超過大小限制未上傳, reverse），以及jyutsp_mobile.prism.bin、jyutsp_mobile.schema.yaml、jyutsp_nospaces.reverse.bin。
-  3. 配置default.custom.yaml，佈署方案。
+  3. 關於鍵盤佈局，修改iRime.custom.yaml，改為27鍵鍵盤。（keyboard_type: 1）
+  4. 配置default.custom.yaml，佈署方案。
 
 
 反查
