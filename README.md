@@ -41,9 +41,9 @@ e.g. {DQ=[diu]/[deu]+[dak], DQ;=[dak]}, <br>
   - 搜狗雙拼（自然碼修改）  **`double_pinyin_sg`**
 
 iRime環境下的安裝
-  - 1.根目錄導入jyutsp_mobile.schema.yaml和jyut6ping3.schema.yaml。（需要雙拼反查的附加double_pinyin_sg.schema.yaml及相應build文件）
-  - 2.build文件夾裡導入jyut6ping3的四個文件（prism, scheme, table, reverse），以及jyutsp_mobile.prism.bin、jyutsp_mobile.schema.yaml、jyutsp_nospaces.reverse.bin。
-  - 3.配置default.custom.yaml，佈署方案。
+  1. 根目錄導入jyutsp_mobile.schema.yaml和jyut6ping3.schema.yaml。（需要雙拼反查的附加double_pinyin_sg.schema.yaml及相應build文件）
+  2. build文件夾裡導入jyut6ping3的四個文件（prism, scheme, table, reverse），以及jyutsp_mobile.prism.bin、jyutsp_mobile.schema.yaml、jyutsp_nospaces.reverse.bin。
+  3. 配置default.custom.yaml，佈署方案。
 
 反查
   - PC版用「\`」鍵打開，mobile版用「~」鍵打開。默認是搜狗雙拼（自然碼修改）反查。
