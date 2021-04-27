@@ -4,7 +4,7 @@
 schema:
   schema_id: jyutsp
   name: 粵雙拼
-  version: "20200305"
+  version: "20200415"
   author: 
     - sgal <ayaka@mail.shn.hk>
     - LeiMaau <leimaau@qq.com>
@@ -28,17 +28,19 @@ schema:
 
 switches:
   - name: ascii_mode
-    reset: 0
+#    reset: 1
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
   - options: [ noop, simp_cn, trad_hk, trad_tw ]
 #    reset: 0
     states: [ 不轉換, 大陆简体, 香港繁體, 臺灣正體 ]
+#  - name: simplification
+#    states: [ 漢字, 汉字 ]
   - name: ascii_punct
     states: [ 。，, ．， ]
   - name: emoji_suggestion
-    reset: 1
+#    reset: 1
     states: [ "🈚️️\uFE0E", "🈶️️\uFE0F" ]
 
 engine:
@@ -57,6 +59,7 @@ engine:
     - affix_segmentor@jyut6ping3
     - affix_segmentor@double_pinyin_sg
     - affix_segmentor@stroke
+    - affix_segmentor@kanji
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
@@ -66,6 +69,8 @@ engine:
     - script_translator@jyut6ping3
     - script_translator@double_pinyin_sg
     - table_translator@stroke
+    - table_translator@custom_phrase
+    - script_translator@kanji
     - reverse_lookup_translator
   filters:
     - simplifier@simp_cn
@@ -87,21 +92,22 @@ speller:
     # 取消下行註釋，支援 n- 併入 l- ，如「你」讀若「理」
     #- derive/^n/l/
     # 取消下行註釋，支援獨立鼻音韻 ng 併入 m，如「吳」讀若「唔」
-    #- derive/^ng$/m/
-    - xform/^([aeiouy])/E$1/    #重要，實現聲母單獨輸入功能。零声母设定，非derive
+    - derive/^ng$/m/
+    - xform/^([aeiou])/E$1/    #重要，實現聲母單獨輸入功能。零声母设定，非derive
     - xform/yun$/R/
     - xform/yut$/D;/  # 增加 ;表示精選
     - xform/^jyu$/YU/
     - xform/yu/Y/
     - xform/^j/Y/
     - derive/^s(?!i)/U$1/    #不兼容齐齿呼
-    - derive/^c/I$1/          #兼容齐齿呼
-    - derive/^z/J$1/          #兼容齐齿呼
+    - derive/^si$/UI/
+    - derive/^c(.+)/I$1/          #兼容齐齿呼
+    - derive/^z(.+)/J$1/          #兼容齐齿呼
     - xform/^kw/Q/
     - xform/^gw/X/
-    - xform/^ku([itk]?$)/Qu$1/
+    - xform/^ku([itk]?)$/Qu$1/
     - derive/^Qu$/KU/
-    - xform/^gu([ink]?$)/Xu$1/
+    - xform/^gu([ink]?)$/Xu$1/
     - xform/^ng/R/
     - xform/iu$/Q/
     - xform/eu$/Q/      
@@ -149,6 +155,7 @@ speller:
     - xform/ui$/X/    
     - xform/(oe|eo)/T/
     - xform/in$/N/
+    - xform/en$/N/
     - xform/im$/M/
     - xform/em$/M/
     - xform/oi/Y;/    # 增加 ;表示精選
@@ -161,31 +168,47 @@ speller:
     - derive/^([a-z|;]{2});/$1/     #非常重要 實現精選
     - xform/^(m|r)$/$1$1/        #mm->[m], rr->[ng].
     # 取消下行註釋，並替換上行註釋，實現成音節用零聲母編碼
-    #- xform/^(m|r)$/e$1/
-    - abbrev/^([a-z|;]).+$/$1/      # 首字母簡拼
-    - abbrev/^([a-z|;]{2}).+$/$1/   # 首2字母簡拼
-    - abbrev/^([a-z|;]{3}).+$/$1/	
-    - abbrev/^([a-z|;]{4}).+$/$1/
+#    - xform/^(m|r)$/e$1/
+
+#    - abbrev/^([a-z|;]).+$/$1/      # 1字首字母簡拼
+    - abbrev/^([a-z|;]{3}).+$/$1/         # 2字词首字母簡拼
+#    - derive/^([a-z|;]{3})([a-z|;])$/$1/      # 2字词首3字母簡拼
+#    - fuzz/^([a-z|;])[a-z|;]([a-z|;])[a-z|;]([a-z|;])[a-z|;]([a-z|;])[a-z|;]$/$1$2$3$4/      #四字詞首字母簡拼
+#    - abbrev/^([a-z|;]{4}).+$/$1/
+#    - fuzz/^([a-z|;]).([a-z|;]).([a-z|;]).([a-z|;]).$/$1$2$3$4/      #四字詞首字母簡拼
+#    - fuzz/^([a-z|;]).([a-z|;]).([a-z|;]).$/$1$2$3/ 
+#    - abbrev/^([a-z|;]{2}).+$/$1/	     # 多字詞首4字母簡拼
+#    - abbrev/^([a-z|;]{3}).+$/$1/
+#    - abbrev/^([a-z|;]{4}).+$/$1/
+
+
+
+
 
 translator:
   dictionary: jyut6ping3
   prism: jyutsp
-  spelling_hints: 8
-  strict_spelling: true
+  spelling_hints: 9
+  enable_user_dict: true
+#  enable_completion:false
+  enable_sentence: true
+  initial_quality: 0.75
+#  strict_spelling: false
   preedit_format:
-    - xform/mｍ/$1M/
+    - xform/(^|[ '])mｍ/$1M/
     - xform/(^|[ '])rr/$1NG/
     - xform/(^|[ '])([edtnlghzjcusi])v;/$1$2AAP/    #順序好重要，先;
-    - xform/(^|[ '])([bpmfdtnlgkrhxzjcusiyw])v/$1$2AAI/
+    - xform/(^|[ '])([ebpmfdtnlgkrhxzjcusiywe])v/$1$2AAI/
     - xform/(^|[ '])([nlgkhzjcusiy])t/$1$2OENG/
-    - derive/(^|[ '])([egrh])e/$1$2ON/
+    - xform/(^|[ '])([egrh])e/$1$2ON/
     - xform/(^|[ '])([bpmdtlghzjcusi]);;/$1$2ENG/
     - xform/(^|[ '])(\w);/$1$2ING$3/
-    - xform/(^|[ '])(r|[pmfdtnlhqxzcsjuiykg])s/$1$2UNG/
+#    - xform/(^|[ '])([rbpmfdtnlhqxzcsjuiykge])s/$1$2UNG/
+    - xform/(^|[ '])(\w)s/$1$2UNG/
     - xform/(^|[ '])yd;/$1YUT/
     - xform/(^|[ '])([dtlgkhzjcusiy])d;/$1$2YUT/
-    - xform/(^|[ '])([gk])d/$1$2YUT/
-    - xform/(^|[ '])(r|[bpmfdtnlhqxzcsjuiy])d/$1$2UK/
+    - xform/(^|[ '])([sugk])d/$1$2YUT/
+    - xform/(^|[ '])([bpmfdtnlhqxzcsjuiyer])d/$1$2UK/
     - xform/(^|[ '])([dtnlgkhzjcusi])r/$1$2YUN/
     - xform/(^|[ '])yr/$1YUN/
     - xform/(^|[ '])([bpmfxw])r/$1$2UN/
@@ -197,26 +220,25 @@ translator:
     - xform/(^|[ '])(\w)q;/$1$2AK/
     - xform/(^|[ '])([exrw])q/$1$2AK/
     - xform/(^|[ '])([bpmdtnlgkhzjcusiy])q/$1$2IU/
-    - xform/(^|[ '])(\w)m;/$1$2AP/
     - xform/(^|[ '])(\w)g;/$1$2ANG/
     - xform/(^|[ '])([fxqmwp])g/$1$2ANG/
     - xform/(^|[ '])(\w)w;/$1$2OT/
-    - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])w/$1$2ONG/
-    - xform/(^|[ '])([dlgkzjcusiy])k;/$1$2OEK/
+    - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiwe])w/$1$2ONG/
+    - xform/(^|[ '])([dlgkzjcusiye])k;/$1$2OEK/
     - xform/(^|[ '])([dtgh])t/$1$2OE/
     - xform/(^|[ '])([dtnlgkhzjcusiy])p;/$1$2EON/
-    - xform/(^|[ '])([y])p/$1$2EON/
+    - xform/(^|[ '])([ye])p/$1$2EON/
     - xform/(^|[ '])([dtnlgkhzjcusiy])o;/$1$2EOT/
     - xform/(^|[ '])(\w)i;/$1$2IT/
     - xform/(^|[ '])([bfkrp])i/$1$2IT/
     - xform/(^|[ '])([bpmfqw])t/$1$2UT/
-    - xform/(^|[ '])([bpmdtnlgrhzjcusi])u/$1$2OU/
+    - xform/(^|[ '])([ebpmdtnlgrhzjcusie])u/$1$2OU/
     - xform/(^|[ '])([fxqw])u/$1$2U/
     - xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])p/$1$2OK/
     - xform/(^|[ '])(\w)f/$1$2AN/
     - xform/(^|[ '])(\w)g/$1$2AM/
     - xform/(^|[ '])(\w)h;/$1$2AAK/
-    - xform/(^|[ '])([bfqyxmpw])h/$1$2AAK/
+    - xform/(^|[ '])([ehbfqyxmpw])h/$1$2AAK/
     - xform/(^|[ '])(\w)h/$1$2AAM/
     - xform/(^|[ '])(\w)j;/$1$2AANG/
     - xform/(^|[ '])([yq])j/$1$2AANG/
@@ -229,19 +251,19 @@ translator:
     - xform/(^|[ '])(\w)z/$1$2EI/
     - xform/(^|[ '])([dtnlgkhzjcusiy])x/$1$2EOI/
     - xform/(^|[ '])([bpmfxqw])x/$1$2UI/
-    - xform/(^|[ '])(\w)c;/$1$2AAT/
-    - xform/(^|[ '])([t])c/$1$2AAT/
+    - xform/(^|[ '])([ebmfdtnlkrxzjcusiw])c;/$1$2AAT/
+    - xform/(^|[ '])([et])c/$1$2AAT/
     - xform/(^|[ '])(\w)c/$1$2AT/
     - xform/(^|[ '])(\w)b/$1$2AU/
     - xform/(^|[ '])(\w)n;/$1$2AAU/
     - xform/(^|[ '])([er])n/$1$2AAU/
     - xform/(^|[ '])(\w)n/$1$2IN/
-    - xform/(^|[ '])([er])m/$1$2AP/
-    - xform/(^|[ '])(?!m)m/$1$2IM/
-    - xform/(^|[ '])i([AEIOUY])/$1CH$2/
+    - xform/(^|[ '])([^m])m;/$1$2AP/
+    - xform/(^|[ '])([^m])m/$1$2IM/
+    - xform/(^|[ '])i([AEIOUYaeiouy])/$1CH$2/
     - xform/(^|[ '])i/$1I/
 #   - derive/(^|[ '])u/$1OU/
-    - xform/(^|[ '])u([AEOUY])/$1SH$2/
+    - xform/(^|[ '])u([AEIOUYaeiouy])/$1SH$2/
     - xform/(^|[ '])u/$1U/
     - xform/(^|[ '])q/$1KW/
     - xform/(^|[ '])x/$1GW/
@@ -277,8 +299,14 @@ translator:
     - xform/WW/W/ 
     - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
 
-
-
+custom_phrase: #這是一個table_translator
+  dictionary: ""
+  user_dict: custom_phrase
+  db_class: tabledb
+  enable_sentence: false
+  enable_completion: false
+  initial_quality: 1
+  
 double_pinyin_sg:
   tag: double_pinyin_sg
   dictionary: luna_pinyin
@@ -323,7 +351,7 @@ double_pinyin_sg:
 jyut6ping3:
   tag: jyut6ping3
   dictionary: jyut6ping3
-  prefix: "Q:"
+  prefix: "`Q"
   suffix: ;
   preedit_format:
     - xform/([aeioumngptk])vv/$1⁴/
@@ -339,16 +367,34 @@ stroke:
   tag: stroke
   dictionary: stroke
   enable_user_dict: false
-  prefix: "X:"
+  prefix: "`X"
   suffix: ";"
   tips: 〔筆畫〕
   preedit_format:
     - xlit/hspnz/一丨丿丶乙/
     
+kanji:
+  tag: kanji
+  prefix: "`N"  # 獨用jyutping_lookup反查在反查鍵「`」之後再鍵入〔大寫〕「J」
+  suffix: "`"
+  dictionary: "nihongo-hybrid"
+  preedit_format:
+    - 'xlit|q|ー|'
+    - 'derive/i_e/ye/'
+    - derive/shi/si/
+    - derive/sy([auo])/sh$1/
+    - derive/zi/ji/
+    - derive/zy([auo])/j$1/
+    - derive/tsu/tu/
+    - derive/chi/ti/
+    - derive/ty([auo])/ch$1/
+    - derive/fu/hu/
+  tips: 【日本語】
+    
 reverse_lookup: #這部分更新至real雙拼
   tags: [double_pinyin_sg, jyut6ping3, stroke]
-  dictionary: jyut6ping3
-  prism: double_pinyin_sg
+  dictionary: jyutsp_nospaces   #這個非常重要，本來是jyut6ping3，然後這個其實需要先將nospaces嘅輸入法佈署下，生成reverse build table。
+#  prism: double_pinyin_sg
   enable_completion: true
   prefix: "`"
   suffix: "'"
@@ -357,70 +403,80 @@ reverse_lookup: #這部分更新至real雙拼
   comment_format:
     - xform/(^| )([a-z1-6]+)/$1\U$2\E（$2）/         # copy
     - xform/（([a-z]+)[123456]）/（$1）/         # 忽略声调
-    - xform/（([aeiou])/（E$1/    #零声母设定，非derive
-    - xform/yun）/R）/
-    - xform/yut）/D;）/  # 增加 ;表示精選
-    - xform/（jyu）/（YU）/
+    - xform/(（|[1-6])([aeiou])/$1E$2/    #零声母设定，非derive
+    - xform/yun/R/
+    - xform/yut/D;/  # 增加 ;表示精選
+    - xform/jyu/YU/
     - xform/yu/Y/
-    - xform/（j/（Y/
-    - xform/（kw/（Q/
-    - xform/（gw/（X/
-    - xform/（ku([itk]?$)/（Qu$1/
-    - xform/（gu([ink]?$)/（Xu$1/
-    - xform/（ng/（R/
-    - xform/iu）/Q）/
-    - xform/eu）/Q）/      
-    - xform/un）/R）/      
-    - xform/oeng）/T）/      
-    - xform/ut）/T）/
-    - xform/ou）/U）/
+    - xform/j/Y/
+    - xform/kw/Q/
+    - xform/gw/X/
+    - xform/ku([itk]?$)/Qu$1/
+    - xform/gu([ink]?$)/Xu$1/
+    - xform/iu/Q/
+    - xform/eu/Q/      
+    - xform/un/R/      
+    - xform/oeng/T/      
+    - xform/ut/T/
+    - xform/ou/U/
     - xform/eot/O;/    # 增加 ;表示精選
     - xform/oet/O;/    # 增加 ;表示精選
-    - xform/ong）/W）/
+    - xform/ong/W/
     - xform/ot/W;/    # 增加 ;表示精選
     - xform/it/I;/    # 增加 ;表示精選
     - xform/et/I;/    # 增加 ;表示精選
-    - xform/ok）/P）/
+    - xform/ok/P/
     - xform/eon/P;/    # 增加 ;表示精選
-    - xform/ung）/S）/
-    - xform/uk）/D）/
+    - xform/ung/S/
+    - xform/uk/D/
     - xform/aap/V;/    # 增加 ;表示精選
     - xform/aai/V/ 
-    - xform/aam）/H）/
+    - xform/aam/H/
     - xform/aak/H;/    # 增加 ;表示精選
     - xform/ak/Q;/    # 增加 ;表示精選
-    - xform/aang）/J;）/  # 增加 ;表示精選
-    - xform/aan）/J）/
+    - xform/aang/J;/  # 增加 ;表示精選
+    - xform/aan/J/
     - xform/aau/N;/    # 增加 ;表示精選
     - xform/ang/G;/    # 增加 ;表示精選
-    - xform/an）/F）/
-    - xform/am）/G）/
-    - xform/ai）/L）/
+    - xform/an/F/
+    - xform/am/G/
+    - xform/ai/L/
     - xform/aat/C;/    # 增加 ;表示精選
-    - xform/at）/C）/
-    - xform/au）/B）/
+    - xform/at/C/
+    - xform/au/B/
     - xform/ap/M;/    # 增加 ;表示精選
-    - xform/aa）/A）/ 
-    - xform/a）/A;）/    # 增加 ;表示精選
-    - xform/ik）/K）/
+    - xform/aa/A/ 
+    - xform/a/A;/    # 增加 ;表示精選
+    - xform/ik/K/
     - xform/oek/K;/    # 增加 ;表示精選
     - xform/ek/K;/    # 增加 ;表示精選
-    - xform/ing）/;）/
+    - xform/ing/;/
     - xform/eng/;;/    # 增加 ;表示精選
-    - xform/ei）/Z）/
+    - xform/ei/Z/
     - xform/ip/Z;/    # 增加 ;表示精選
     - xform/ep/Z;/    # 增加 ;表示精選
-    - xform/eoi）/X）/
-    - xform/ui）/X）/    
+    - xform/eoi/X/
+    - xform/ui/X/    
     - xform/(oe|eo)/T/
-    - xform/in）/N）/
-    - xform/im）/M）/
-    - xform/em）/M）/
+    - xform/in/N/
+    - xform/im/M/
+    - xform/em/M/
     - xform/oi/Y;/    # 增加 ;表示精選
-    - xform/on）/E）/      # 增加 ;表示精選
-    - xform/(.*)ng）/$1R）/
+    - xform/on/E/      # 增加 ;表示精選
+    - xform/ng/R/
     - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ（）/abcdefghijklmnopqrstuvwxyz()/
 
+#simplifier:
+#  option_name: simplification
+
+key_binder:
+  import_preset: default
+  bindings:
+    - {accept: "Control+Shift+f", toggle: simp_cn, when: always}
+    - {accept: "Control+Shift+F", toggle: simp_cn, when: always}
+#    - {accept: "Control+Shift+t", toggle: zh_tw, when: always}
+#    - {accept: "Control+Shift+T", toggle: zh_tw, when: always}
+    
 simp_cn:
   option_name: simp_cn
   opencc_config: t2s.json    
@@ -441,14 +497,15 @@ emoji_suggestion:
 punctuator:
   import_preset: default
 
-key_binder:
-  import_preset: default
+#key_binder:
+#  import_preset: default
 
 recognizer:
   import_preset: default
   patterns:
-    punct: "^/([0-9]0?|[a-z]+)$"
+#    punct: "^/([0-9]0?|[a-z]+)$"   #這裏/-->|
     double_pinyin_sg: "`[a-z|;]*'?$"
 #    reverse_lookup: "`[a-z|;]*'?$"
-    jyut6ping3: "Q:[a-z|;]*'?$"
-    stroke: "X:[hspnz]*'?$"
+    jyut6ping3: "`Q[a-z|;]*'?$"
+    stroke: "`X[hspnz]*'?$"
+    kanji: "`N[a-z]*?$"
