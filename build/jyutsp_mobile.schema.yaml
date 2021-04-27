@@ -1,0 +1,476 @@
+__build_info:
+  rime_version: 1.5.3
+  timestamps:
+    default: 1561218646
+    default.custom: 1596466859
+    jyutsp_mobile.custom: 0
+    jyutsp_mobile.schema: 1587233626
+    key_bindings: 1561218646
+    key_bindings.custom: 0
+    punctuation: 1561218646
+    punctuation.custom: 0
+custom_phrase:
+  db_class: tabledb
+  dictionary: ""
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+  user_dict: custom_phrase
+double_pinyin_sg:
+  dictionary: luna_pinyin
+  enable_user_dict: false
+  preedit_format:
+    - "erase/^xx$/"
+    - "xform/^sh/U/"
+    - "xform/^ch/I/"
+    - "xform/^zh/V/"
+    - "derive/^([jqxy])u$/$1v/"
+    - "derive/^([aoe])([ioun])$/$1$1$2/"
+    - "xform/^([aoe])(ng)?$/$1$1$2/"
+    - "xform/(\\w)iu$/$1Q/"
+    - "xform/(\\w)[iu]a$/$1W/"
+    - "xform/(\\w)[uv]an$/$1R/"
+    - "xform/(\\w)[uv]e$/$1T/"
+    - "xform/(\\w)uai$/$1Y/"
+    - "xform/(\\w)ing$/$1;/"
+    - "xform/(\\w)uo$/$1O/"
+    - "xform/(\\w)[uv]n$/P/"
+    - "xform/(\\w)i?ong$/$1S/"
+    - "xform/(\\w)[iu]ang$/D/"
+    - "xform/(?!e)en$/$1F/"
+    - "xform/(?!e)eng$/$1G/"
+    - "xform/(?!a)ang$/$1H/"
+    - "xform/(\\w)ian$/M/"
+    - "xform/(?!a)an$/$1J/"
+    - "xform/(\\w)iao$/$1C/"
+    - "xform/(?!a)ao$/$1K/"
+    - "xform/(?!a)ai$/$1L/"
+    - "xform/(?!e)ei$/$1Z/"
+    - "xform/(\\w)ie$/$1X/"
+    - "xform/(\\w)ui$/$1V/"
+    - "xform/(?!o)ou$/$1B/"
+    - "xform/(\\w)in$/$1N/"
+    - "xlit/QWRTYUIOPSDFGHMJCKLZXVBN/qwrtyuiopsdfghmjcklzxvbn/"
+  prefix: "~"
+  prism: double_pinyin_sg
+  suffix: "'"
+  tag: double_pinyin_sg
+  tips: "〔雙拼〕"
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: all
+engine:
+  filters:
+    - "simplifier@simp_cn"
+    - "simplifier@trad_tw"
+    - "simplifier@trad_hk"
+    - "simplifier@emoji_suggestion"
+    - uniquifier
+    - "reverse_lookup_filter@reverse_lookup"
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - "affix_segmentor@jyut6ping3"
+    - "affix_segmentor@double_pinyin_sg"
+    - "affix_segmentor@stroke"
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - "script_translator@jyut6ping3"
+    - "script_translator@double_pinyin_sg"
+    - "table_translator@stroke"
+    - "table_translator@custom_phrase"
+    - reverse_lookup_translator
+jyut6ping3:
+  dictionary: jyut6ping3
+  preedit_format:
+    - "xform/([aeioumngptk])vv/$1⁴/"
+    - "xform/([aeioumngptk])xx/$1⁵/"
+    - "xform/([aeioumngptk])qq/$1⁶/"
+    - "xform/([aeioumngptk])v/$1¹/"
+    - "xform/([aeioumngptk])x/$1²/"
+    - "xform/([aeioumngptk])q/$1³/"
+  prefix: "-"
+  suffix: ";"
+  tag: jyut6ping3
+  tips: "〔粤拼〕"
+key_binder:
+  bindings:
+    - {accept: "Control+p", send: Up, when: composing}
+    - {accept: "Control+n", send: Down, when: composing}
+    - {accept: "Control+b", send: Left, when: composing}
+    - {accept: "Control+f", send: Right, when: composing}
+    - {accept: "Control+a", send: Home, when: composing}
+    - {accept: "Control+e", send: End, when: composing}
+    - {accept: "Control+d", send: Delete, when: composing}
+    - {accept: "Control+k", send: "Shift+Delete", when: composing}
+    - {accept: "Control+h", send: BackSpace, when: composing}
+    - {accept: "Control+g", send: Escape, when: composing}
+    - {accept: "Control+bracketleft", send: Escape, when: composing}
+    - {accept: "Alt+v", send: Page_Up, when: composing}
+    - {accept: "Control+v", send: Page_Down, when: composing}
+    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
+    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
+    - {accept: Tab, send: "Shift+Right", when: composing}
+    - {accept: minus, send: Page_Up, when: has_menu}
+    - {accept: equal, send: Page_Down, when: has_menu}
+    - {accept: comma, send: Page_Up, when: paging}
+    - {accept: period, send: Page_Down, when: has_menu}
+    - {accept: "Control+Shift+1", select: .next, when: always}
+    - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
+    - {accept: "Control+Shift+3", toggle: full_shape, when: always}
+    - {accept: "Control+Shift+4", toggle: simplification, when: always}
+    - {accept: "Control+Shift+5", toggle: extended_charset, when: always}
+    - {accept: "Control+Shift+exclam", select: .next, when: always}
+    - {accept: "Control+Shift+at", toggle: ascii_mode, when: always}
+    - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
+    - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
+    - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
+  import_preset: default
+menu:
+  page_size: 9
+punctuator:
+  full_shape:
+    " ": {commit: "　"}
+    "!": {commit: "！"}
+    "\"": {pair: ["“", "”"]}
+    "#": ["＃", "⌘"]
+    "$": ["￥", "$", "€", "£", "¥", "¢", "¤"]
+    "%": ["％", "°", "℃"]
+    "&": "＆"
+    "'": {pair: ["‘", "’"]}
+    "(": "（"
+    ")": "）"
+    "*": ["＊", "·", "・", "×", "※", "❂"]
+    "+": "＋"
+    ",": {commit: "，"}
+    "-": "－"
+    .: {commit: "。"}
+    "/": ["／", "÷"]
+    ":": {commit: "："}
+    ";": {commit: "；"}
+    "<": ["《", "〈", "«", "‹"]
+    "=": "＝"
+    ">": ["》", "〉", "»", "›"]
+    "?": {commit: "？"}
+    "@": ["＠", "☯"]
+    "[": ["「", "【", "〔", "［"]
+    "\\": ["、", "＼"]
+    "]": ["」", "】", "〕", "］"]
+    "^": {commit: "……"}
+    _: "——"
+    "`": "｀"
+    "{": ["『", "〖", "｛"]
+    "|": ["·", "｜", "§", "¦"]
+    "}": ["』", "〗", "｝"]
+    "~": "～"
+  half_shape:
+    "!": {commit: "！"}
+    "\"": {pair: ["“", "”"]}
+    "#": "#"
+    "$": ["￥", "$", "€", "£", "¥", "¢", "¤"]
+    "%": ["%", "％", "°", "℃"]
+    "&": "&"
+    "'": {pair: ["‘", "’"]}
+    "(": "（"
+    ")": "）"
+    "*": ["*", "＊", "·", "・", "×", "※", "❂"]
+    "+": {commit: "+"}
+    ",": {commit: "，"}
+    "-": {commit: "-"}
+    .: {commit: "。"}
+    "/": ["/", "／", "、", "÷"]
+    ":": {commit: "："}
+    ";": {commit: "；"}
+    "<": ["《", "〈", "«", "‹"]
+    "=": "="
+    ">": ["》", "〉", "»", "›"]
+    "?": {commit: "？"}
+    "@": "@"
+    "[": ["「", "【", "〔", "［"]
+    "\\": ["、", "\\", "＼"]
+    "]": ["」", "】", "〕", "］"]
+    "^": {commit: "……"}
+    _: "——"
+    "`": "`"
+    "{": ["『", "〖", "｛"]
+    "|": ["·", "|", "｜", "§", "¦"]
+    "}": ["』", "〗", "｝"]
+    "~": ["~", "～"]
+  import_preset: default
+recognizer:
+  import_preset: default
+  patterns:
+    double_pinyin_sg: "~[a-z|;]*'?$"
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    jyut6ping3: "-[a-z]*'?$"
+    stroke: "/[hspnz]*'?$"
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+reverse_lookup:
+  dictionary: jyutsp_nospaces
+  enable_completion: true
+  overwrite_comment: false
+  prefix: "`"
+  suffix: "'"
+  tags:
+    - double_pinyin_sg
+    - jyut6ping3
+    - stroke
+  tips: "〔反查〕"
+schema:
+  author:
+    - "sgal <ayaka@mail.shn.hk>"
+    - "LeiMaau <leimaau@qq.com>"
+    - "chaaklau <chaakming@gmail.com>"
+    - "laubonghaudoi <laubonghaudoi@icloud.com>"
+    - "Over-There-Is <1918301767@qq.com>"
+    - "MrCorn0-0 <gary.deng@qq.com>"
+  dependencies:
+    - jyut6ping3
+    - double_pinyin_sg
+    - stroke
+  description: |
+    基於「jyut6ping3」聲調粵拼詞庫、重要參考「soengping」的粵語雙拼輸入方案。
+    本方案適合在移動端使用。兩鍵內輸入漢字，附加編碼「；」可以實現精準摘選重碼韻母。
+    採用1993年香港語言學學會粵語拼音方案   https://www.lshk.org/jyutping
+    「jyut6ping3」項目主頁 https://github.com/rime/rime-cantonese
+    「soengping」項目主頁 https://github.com/Over-There-Is/rime-soengping/
+    「jyutsp」本項目主頁 https://github.com/MrCorn0-0/jyutsp
+    
+  name: "粵雙拼_mobile"
+  schema_id: jyutsp_mobile
+  version: 20200305
+simp_cn:
+  opencc_config: t2s.json
+  option_name: simp_cn
+speller:
+  algebra:
+    - "xform/([123456])//"
+    - "xform/^([aeiou])/E$1/"
+    - "xform/yun$/R/"
+    - "xform/yut$/D;/"
+    - "xform/^jyu$/YU/"
+    - "xform/yu/Y/"
+    - "xform/^j/Y/"
+    - "derive/^s/U$1/"
+    - "derive/^c/I$1/"
+    - "derive/^z/J$1/"
+    - "xform/^kw/Q/"
+    - "xform/^gw/X/`"
+    - "xform/^ku([itk]?)$/Qu$1/"
+    - "derive/^Qu$/KU/"
+    - "xform/^gu([ink]?)$/Xu$1/"
+    - "xform/^ng/R/"
+    - "xform/iu$/Q/"
+    - "xform/eu$/Q/"
+    - "xform/un$/R/"
+    - "xform/oeng$/T/"
+    - "xform/ut$/T/"
+    - "xform/ou$/U/"
+    - "xform/eot/O;/"
+    - "xform/oet/O;/"
+    - "xform/ong$/W/"
+    - "xform/ot/W;/"
+    - "xform/it/I;/"
+    - "xform/et/I;/"
+    - "xform/ok$/P/"
+    - "xform/eon/P;/"
+    - "xform/ung$/S/"
+    - "xform/uk$/D/"
+    - "xform/aap/V;/"
+    - "xform/aai/V/"
+    - "xform/aam$/H/"
+    - "xform/aak/H;/"
+    - "xform/ak/Q;/"
+    - "xform/aang$/J;/"
+    - "xform/aan$/J/"
+    - "xform/aau/N;/"
+    - "xform/ang/G;/"
+    - "xform/an$/F/"
+    - "xform/am$/G/"
+    - "xform/ai$/L/"
+    - "xform/aat/C;/"
+    - "xform/at$/C/"
+    - "xform/au$/B/"
+    - "xform/ap/M;/"
+    - "xform/aa$/A/"
+    - "xform/a$/A;/"
+    - "xform/ik$/K/"
+    - "xform/oek/K;/"
+    - "xform/ek/K;/"
+    - "xform/ing$/;/"
+    - "xform/eng/;;/"
+    - "xform/ei$/Z/"
+    - "xform/ip/Z;/"
+    - "xform/ep/Z;/"
+    - "xform/eoi$/X/"
+    - "xform/ui$/X/"
+    - "xform/(oe|eo)/T/"
+    - "xform/in$/N/"
+    - "xform/en$/N/"
+    - "xform/im$/M/"
+    - "xform/em$/M/"
+    - "xform/oi/Y;/"
+    - "xform/on$/E/"
+    - "xform/(.*)ng$/$1R/"
+    - "xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
+    - "derive/^r$/m/"
+    - "derive/^k([s])/q$1/"
+    - "derive/^g([s])/x$1/"
+    - "derive/^e([aov])$/$1/"
+    - "derive/^([a-z|;]{2});/$1/"
+    - "xform/^(m|r)$/$1$1/"
+    - "abbrev/^([a-z|;]{3}).+$/$1/"
+  alphabet: "zyxwvutsrqponmlkjihgfedcba;"
+  delimiter: " '"
+stroke:
+  dictionary: stroke
+  enable_user_dict: false
+  preedit_format:
+    - "xlit/hspnz/一丨丿丶乙/"
+  prefix: "/"
+  suffix: ";"
+  tag: stroke
+  tips: "〔筆畫〕"
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: ["中文", "西文"]
+  - name: full_shape
+    states: ["半角", "全角"]
+  - options: [noop, simp_cn, trad_hk, trad_tw]
+    states: ["不轉換", "大陆简体", "香港繁體", "臺灣正體"]
+  - name: ascii_punct
+    states: ["。，", "．，"]
+  - name: emoji_suggestion
+    reset: 1
+    states: ["🈚️️︎", "🈶️️️"]
+trad_hk:
+  opencc_config: t2hk.json
+  option_name: trad_hk
+trad_tw:
+  opencc_config: t2tw.json
+  option_name: trad_tw
+translator:
+  dictionary: jyut6ping3
+  enable_sentence: true
+  enable_user_dict: true
+  initial_quality: 0.8
+  preedit_format:
+    - "xform/(^|[ '])mｍ/$1M/"
+    - "xform/(^|[ '])rr/$1NG/"
+    - "xform/(^|[ '])([edtnlghzjcusi])v;/$1$2AAP/"
+    - "xform/(^|[ '])([ebpmfdtnlgkrhxzjcusiywe])v/$1$2AAI/"
+    - "xform/(^|[ '])([nlgkhzjcusiy])t/$1$2OENG/"
+    - "xform/(^|[ '])([egrh])e/$1$2ON/"
+    - "xform/(^|[ '])([bpmdtlghzjcusi]);;/$1$2ENG/"
+    - "xform/(^|[ '])(\\w);/$1$2ING$3/"
+    - "xform/(^|[ '])(\\w)s/$1$2UNG/"
+    - "xform/(^|[ '])yd;/$1YUT/"
+    - "xform/(^|[ '])([dtlgkhzjcusiy])d;/$1$2YUT/"
+    - "xform/(^|[ '])([sugk])d/$1$2YUT/"
+    - "xform/(^|[ '])([bpmfdtnlhqxzcsjuiyer])d/$1$2UK/"
+    - "xform/(^|[ '])([dtnlgkhzjcusi])r/$1$2YUN/"
+    - "xform/(^|[ '])yr/$1YUN/"
+    - "xform/(^|[ '])([bpmfxw])r/$1$2UN/"
+    - "xform/(^|[ '])([dtnlgkrhzjcusie])y;/$1$2OI/"
+    - "xform/(^|[ '])([dtnlgkrhe])y/$1$2OI/"
+    - "xform/(^|[ '])yu/$1YU/"
+    - "xform/(^|[ '])([zjcusi])y/$1$2YU/"
+    - "xform/(^|[ '])([mlg])a;/$1$2A/"
+    - "xform/(^|[ '])(\\w)q;/$1$2AK/"
+    - "xform/(^|[ '])([exrw])q/$1$2AK/"
+    - "xform/(^|[ '])([bpmdtnlgkhzjcusiy])q/$1$2IU/"
+    - "xform/(^|[ '])(\\w)g;/$1$2ANG/"
+    - "xform/(^|[ '])([fxqmwp])g/$1$2ANG/"
+    - "xform/(^|[ '])(\\w)w;/$1$2OT/"
+    - "xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiwe])w/$1$2ONG/"
+    - "xform/(^|[ '])([dlgkzjcusiye])k;/$1$2OEK/"
+    - "xform/(^|[ '])([dtgh])t/$1$2OE/"
+    - "xform/(^|[ '])([dtnlgkhzjcusiy])p;/$1$2EON/"
+    - "xform/(^|[ '])([ye])p/$1$2EON/"
+    - "xform/(^|[ '])([dtnlgkhzjcusiy])o;/$1$2EOT/"
+    - "xform/(^|[ '])(\\w)i;/$1$2IT/"
+    - "xform/(^|[ '])([bfkrp])i/$1$2IT/"
+    - "xform/(^|[ '])([bpmfqw])t/$1$2UT/"
+    - "xform/(^|[ '])([ebpmdtnlgrhzjcusie])u/$1$2OU/"
+    - "xform/(^|[ '])([fxqw])u/$1$2U/"
+    - "xform/(^|[ '])([bpmfdtnlgkrhxqzjcusiw])p/$1$2OK/"
+    - "xform/(^|[ '])(\\w)f/$1$2AN/"
+    - "xform/(^|[ '])(\\w)g/$1$2AM/"
+    - "xform/(^|[ '])(\\w)h;/$1$2AAK/"
+    - "xform/(^|[ '])([ehbfqyxmpw])h/$1$2AAK/"
+    - "xform/(^|[ '])(\\w)h/$1$2AAM/"
+    - "xform/(^|[ '])(\\w)j;/$1$2AANG/"
+    - "xform/(^|[ '])([yq])j/$1$2AANG/"
+    - "xform/(^|[ '])(\\w)j/$1$2AAN/"
+    - "xform/(^|[ '])(\\w)a/$1$2AA/"
+    - "xform/(^|[ '])(\\w)k/$1$2IK/"
+    - "xform/(^|[ '])(\\w)l/$1$2AI/"
+    - "xform/(^|[ '])(\\w)z;/$1$2IP/"
+    - "xform/(^|[ '])([cytzj])z/$1$2IP/"
+    - "xform/(^|[ '])(\\w)z/$1$2EI/"
+    - "xform/(^|[ '])([dtnlgkhzjcusiy])x/$1$2EOI/"
+    - "xform/(^|[ '])([bpmfxqw])x/$1$2UI/"
+    - "xform/(^|[ '])([ebmfdtnlkrxzjcusiw])c;/$1$2AAT/"
+    - "xform/(^|[ '])([et])c/$1$2AAT/"
+    - "xform/(^|[ '])(\\w)c/$1$2AT/"
+    - "xform/(^|[ '])(\\w)b/$1$2AU/"
+    - "xform/(^|[ '])(\\w)n;/$1$2AAU/"
+    - "xform/(^|[ '])([er])n/$1$2AAU/"
+    - "xform/(^|[ '])(\\w)n/$1$2IN/"
+    - "xform/(^|[ '])([^m])m;/$1$2AP/"
+    - "xform/(^|[ '])([^m])m/$1$2IM/"
+    - "xform/(^|[ '])i([AEIOUYaeiouy])/$1CH$2/"
+    - "xform/(^|[ '])i/$1I/"
+    - "xform/(^|[ '])u([AEIOUYaeiouy])/$1SH$2/"
+    - "xform/(^|[ '])u/$1U/"
+    - "xform/(^|[ '])q/$1KW/"
+    - "xform/(^|[ '])x/$1GW/"
+    - "xform/(^|[ '])KWU/$1KU/"
+    - "xform/(^|[ '])GWU/$1GU/"
+    - "xform/(^|[ '])KWu/$1KU/"
+    - "xform/(^|[ '])GWu/$1GU/"
+    - "xform/r/NG/"
+    - "xform/(^|[ '])b/$1B/"
+    - "xform/(^|[ '])c/$1C/"
+    - "xform/(^|[ '])d/$1D/"
+    - "xform/(^|[ '])f/$1F/"
+    - "xform/(^|[ '])g/$1G/"
+    - "xform/(^|[ '])h/$1H/"
+    - "xform/(^|[ '])j/$1J/"
+    - "xform/(^|[ '])k/$1K/"
+    - "xform/(^|[ '])l/$1L/"
+    - "xform/(^|[ '])m/$1M/"
+    - "xform/(^|[ '])n/$1N/"
+    - "xform/(^|[ '])o/$1O/"
+    - "xform/(^|[ '])p/$1P/"
+    - "xform/(^|[ '])s/$1S/"
+    - "xform/(^|[ '])t/$1T/"
+    - "xform/(^|[ '])v/$1V/"
+    - "xform/(^|[ '])w/$1W/"
+    - "xform/(^|[ '])y/$1Y/"
+    - "xform/(^|[ '])z/$1Z/"
+    - "xform/(^|[ '])e(\\w+)/$1$2/"
+    - "xform/(^|[ '])e/$1E/"
+    - "xform/(K?)W(I|O)NG/$1WW$2NG/"
+    - "xform/(G)W(AAM|AAU|AM|AU|ENG|IM|IU|OE|OI|U|Y)/$1$2/"
+    - "xform/(K)W(AAM|AAU|AM|AU|E|I|O|U|Y)/$1$2/"
+    - "xform/WW/W/"
+    - "xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
+  prism: jyutsp_mobile
+  spelling_hints: 9
