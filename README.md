@@ -17,7 +17,7 @@
 
 ## 聲母
 * 大部分輔音都在原有的QWERTY鍵盤位置。採用27鍵盤。忽略聲調。
-* kw，gw 分別放在 Q和X 鍵位，E 作為零聲母起始鍵搭配元音。參考 [Over-There-Is](https://github.com/Over-There-Is/rime-soengping/) 的處理，對於 u, ut, ui, un, uk 五個音的聲母不用 k w 換用 q x，減少重碼。 （兼容 ku 的輸入）
+* kw，gw 分別放在 Q和X 鍵位，E 作為零聲母起始鍵搭配元音。參考 [Over-There-Is](https://github.com/Over-There-Is/rime-soengping/) 的處理，對於 u, ut, ui, un, uk 五個音的聲母不用 k g 換用 q x (kw gw)，減少重碼。 （兼容 ku 的輸入）
 * U, I, J 分別是 sh, ch（參考自然碼）和 zh，用法大致同 s, c, z 現代粵語有舌葉音和所謂平舌音的發音區別存在，但在同一個音位，可以混拼。本方案排除 u+i 這一組齊齒呼(只能用s+i)之外，兼容 i/c, j/z 兩種拼法。
 * 本方案[j]聲母放在Y鍵。
 
