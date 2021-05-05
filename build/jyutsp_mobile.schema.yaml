@@ -1,14 +1,10 @@
 __build_info:
   rime_version: 1.5.3
   timestamps:
-    default: 1561218646
-    default.custom: 1596466859
+    default: 1555864390
+    default.custom: 1586485269
     jyutsp_mobile.custom: 0
-    jyutsp_mobile.schema: 1587233626
-    key_bindings: 1561218646
-    key_bindings.custom: 0
-    punctuation: 1561218646
-    punctuation.custom: 0
+    jyutsp_mobile.schema: 1587233774
 custom_phrase:
   db_class: tabledb
   dictionary: ""
@@ -122,9 +118,9 @@ key_binder:
     - {accept: "Control+bracketleft", send: Escape, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
-    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
-    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
-    - {accept: Tab, send: "Shift+Right", when: composing}
+    - {accept: ISO_Left_Tab, send: Page_Up, when: composing}
+    - {accept: "Shift+Tab", send: Page_Up, when: composing}
+    - {accept: Tab, send: Page_Down, when: composing}
     - {accept: minus, send: Page_Up, when: has_menu}
     - {accept: equal, send: Page_Down, when: has_menu}
     - {accept: comma, send: Page_Up, when: paging}
@@ -139,6 +135,8 @@ key_binder:
     - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
     - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
     - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
+    - {accept: "Shift+space", toggle: full_shape, when: always}
+    - {accept: "Control+period", toggle: ascii_punct, when: always}
   import_preset: default
 menu:
   page_size: 9
@@ -188,9 +186,9 @@ punctuator:
     "(": "（"
     ")": "）"
     "*": ["*", "＊", "·", "・", "×", "※", "❂"]
-    "+": {commit: "+"}
+    "+": "+"
     ",": {commit: "，"}
-    "-": {commit: "-"}
+    "-": "-"
     .: {commit: "。"}
     "/": ["/", "／", "、", "÷"]
     ":": {commit: "："}
@@ -201,7 +199,7 @@ punctuator:
     "?": {commit: "？"}
     "@": "@"
     "[": ["「", "【", "〔", "［"]
-    "\\": ["、", "\\", "＼"]
+    "\\": "＼"
     "]": ["」", "】", "〕", "］"]
     "^": {commit: "……"}
     _: "——"
